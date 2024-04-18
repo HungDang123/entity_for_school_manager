@@ -1,0 +1,30 @@
+
+:root {
+    --background: #3C343D;
+    --background-border: #6B626C;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.parallax-image {
+    display: block;
+    height: 58.75rem;
+    width: 100%;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+section {
+    padding: 4rem;
+}
+
+section > h2 {
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+}
+

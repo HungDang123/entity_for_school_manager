@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet">
+    <style>
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        div{
+            margin-bottom: 10px;
+        }
+        .container {
+            width: 100%;
+        }
+
+        /* Center the content in the column */
+        .text-center {
+            text-align: center;
+        }
+
+        /* Adjust the width of the form */
+        .w-25 {
+            width: 25%;
+        }
+
+        /* Optional: Add some padding around the form */
+        .w-25 p {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+<div class="container w-25">
+    <h3>Hệ thống quản lý sinh viên</h3>
+    <h4>Register</h4>
+    <hr/>
+
+    <form action="#" th:action="@{/register/process}" th:object="${registerUser}" method="get">
+        <div th:if="${param.error}" class="red">
+            <span th:text="${param.error}"></span>
+        </div>
+        <div th:if="${my_error}" class="alert alert-danger" role="alert">
+            <span th:text="${my_error}"></span>
+        </div>
+        <div class="">
+            <input type="text" th:field="*{username}" placeholder="Username (*))" class="form-control">
+            <div th:if="${#fields.hasErrors('username')}">
+                <ul>
+                    <li th:each="e: ${#fields.errors('username')}" th:text="${e}"></li>
+                </ul>
+            </div>
+        </div>
+        <div>
+            <input type="password" th:field="*{password}" placeholder="password (*))" class="form-control">
+            <div th:if="${#fields.hasErrors('password')}">
+                <ul>
+                    <li th:each="e: ${#fields.errors('password')}" th:text="${e}"></li>
+                </ul>
+            </div>
+        </div>
+        <div>
+            <input type="text" th:field="*{firstName}" placeholder="firstName (*))" class="form-control">
+            <div th:if="${#fields.hasErrors('firstName')}">
+                <ul>
+                    <li th:each="e: ${#fields.errors('firstName')}" th:text="${e}"></li>
+                </ul>
+            </div>
+        </div>
+        <div>
+            <input type="text" th:field="*{lastName}" placeholder="lastName (*))" class="form-control">
+            <div th:if="${#fields.hasErrors('lastName')}">
+                <ul>
+                    <li th:each="e: ${#fields.errors('lastName')}" th:text="${e}"></li>
+                </ul>
+            </div>
+        </div>
+        <div>
+            <input type="email" th:field="*{email}" placeholder="email (*))" class="form-control">
+            <div th:if="${#fields.hasErrors('email')}">
+                <ul>
+                    <li th:each="e: ${#fields.errors('email')}" th:text="${e}"></li>
+                </ul>
+            </div>
+        </div>
+        <button class="btn btn-success" type="submit">Đăng ký</button>
+    </form>
+</div>
+</body>
+<script th:src="@{/js/bootstrap.bundle.js}"></script>
+</html>

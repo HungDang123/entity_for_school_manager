@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Danh sách sinh viên</title>
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <h3>Hệ thống quản lý sinh viên</h3>
+            <h4>Trang chủ</h4>
+        </div>
+        <div class="col-6">
+            Xin chào <b><span sec:authentication="principal.username"> </span></b>,
+            <span sec:authentication="principal.authorities"></span>
+            <form action="#" th:action="@{logout}" method="post">
+                <button class="btn btn-info" type="submit">Đăng xuất</button>
+            </form>
+        </div>
+    </div>
+    <a th:href="@{openView}" sec:authorize="hasAnyRole('ADMIN','MANAGER','TEACHER')" class="btn btn-info">Xem</a>
+    <button sec:authorize="hasAnyRole('ADMIN','MANAGER')" class="btn btn-warning">Chỉnh sửa</button>
+    <button sec:authorize="hasAnyRole('ADMIN')" class="btn btn-danger">Xóa</button>
+</div>
+</body>
+<script th:src="@{/js/bootstrap.bundle.js}"></script>
+</html>

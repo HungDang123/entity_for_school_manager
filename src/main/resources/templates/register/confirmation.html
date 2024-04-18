@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet">
+    <style>
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 100%;
+        }
+
+        /* Center the content in the column */
+        .text-center {
+            text-align: center;
+        }
+
+        /* Adjust the width of the form */
+        .w-25 {
+            width: 25%;
+        }
+
+        /* Optional: Add some padding around the form */
+        .w-25 p {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+<div class="container w-25">
+    <h3>Chúc mừng bạn đã đăng ký thành công tài khoản mới: <span th:text="${session.myuser.getUsername()}"></span></h3>
+    <a th:href="@{/showLoginPage}">Quay lại trang đăng nhập</a>
+</div>
+<script th:src="@{/js/bootstrap.bundle.js}"></script>
+</body>
+</html>
